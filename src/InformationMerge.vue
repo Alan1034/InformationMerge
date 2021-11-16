@@ -1,7 +1,7 @@
 <!--
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2021-10-12 17:54:01
- * @LastEditTime: 2021-11-16 17:13:05
+ * @LastEditTime: 2021-11-16 18:27:32
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 
@@ -10,21 +10,41 @@
 -->
 <script>
 import Clipboard from "clipboard";
+import * as Vue from "vue";
 
-const copyOrderNo = (id) => {
+const version = Vue.default
+  ? Number(Vue.default.version.split(".")[0])
+  : Number(Vue.version.split(".")[0]);
+
+const copyOrderNo = async (id) => {
   // 此处需要传入一个id
   let clipboard = new Clipboard(`#${id}`);
-  clipboard.on("success", (e) => {
-     this.$message({
-      message: "复制成功",
-      type: "success",
+  if (`${version}` === 3) {
+    const { ElMessage } = await import("element-plus");
+    clipboard.on("success", (e) => {
+      ElMessage({
+        message: "复制成功",
+        type: "success",
+      });
+      clipboard.destroy();
     });
-    clipboard.destroy();
-  });
+  } else {
+    const { Message } = await import("element-ui");
+    clipboard.on("success", (e) => {
+      Message({
+        message: "复制成功",
+        type: "success",
+      });
+      clipboard.destroy();
+    });
+  }
 };
 
 const InformationMerge = (props, context) => {
-  const { data } = props;
+  let { data } = props;
+  if (props.props.data) {
+    data = props.props.data;
+  }
   const style = "cursor:pointer";
   const i = (
     <div>
@@ -40,19 +60,35 @@ const InformationMerge = (props, context) => {
             </div>
           ),
         };
+        const int = (
+          <div
+            style={style}
+            id={key}
+            onClick={() => copyOrderNo(key)}
+            data-clipboard-text={value}
+          >
+            {value || "无"}
+          </div>
+        );
         return (
           <div>
             <div>{label}：</div>
-            <el-tooltip placement="top" v-slots={slots}>
-              <div
-                style={style}
-                id={key}
-                onClick={() => copyOrderNo(key)}
-                data-clipboard-text={value}
-              >
-                {value || "无"}
-              </div>
-            </el-tooltip>
+            {`${version}` === 3 ? (
+              <el-tooltip placement="top" v-slots={slots}>
+                {int}
+              </el-tooltip>
+            ) : (
+              <el-tooltip placement="top">
+                <div slot="content">
+                  <div>
+                    {value}
+                    <br />
+                    点击复制
+                  </div>
+                </div>
+                {int}
+              </el-tooltip>
+            )}
           </div>
         );
       })}
