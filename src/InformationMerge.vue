@@ -1,12 +1,21 @@
+<!--
+ * @Author: 陈德立*******419287484@qq.com
+ * @Date: 2021-10-12 17:54:01
+ * @LastEditTime: 2021-11-16 17:13:05
+ * @LastEditors: 陈德立*******419287484@qq.com
+ * @Github: https://github.com/Alan1034
+ * @Description: 
+ * @FilePath: \InformationMerge\src\InformationMerge.vue
+ * 
+-->
 <script>
 import Clipboard from "clipboard";
-import { ElMessage } from "element-plus";
 
 const copyOrderNo = (id) => {
   // 此处需要传入一个id
   let clipboard = new Clipboard(`#${id}`);
   clipboard.on("success", (e) => {
-    ElMessage({
+     this.$message({
       message: "复制成功",
       type: "success",
     });

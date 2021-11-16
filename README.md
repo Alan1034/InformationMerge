@@ -2,6 +2,8 @@
 
 一个集成了点击复制功能的展示组件 <br/>
 
+import InformationMerge from "information-merge";
+
 示例:
 
     const data = [
