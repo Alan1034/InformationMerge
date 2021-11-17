@@ -1,7 +1,7 @@
 <!--
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2021-10-12 17:54:01
- * @LastEditTime: 2021-11-17 12:11:40
+ * @LastEditTime: 2021-11-17 15:55:55
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 
@@ -9,35 +9,20 @@
  * 
 -->
 <script>
-import Clipboard from "clipboard";
 import * as Vue from "vue";
 
 const version = Vue.default
   ? Number(Vue.default.version.split(".")[0])
   : Number(Vue.version.split(".")[0]);
 
-const copyOrderNo = async (id) => {
-  // 此处需要传入一个id
-  let clipboard = new Clipboard(`#${id}`);
-  if (`${version}` === 3) {
-    const { ElMessage } = await import("element-plus");
-    clipboard.on("success", (e) => {
-      ElMessage({
-        message: "复制成功",
-        type: "success",
-      });
-      clipboard.destroy();
-    });
-  } else {
-    const { Message } = await import("element-ui");
-    clipboard.on("success", (e) => {
-      Message({
-        message: "复制成功",
-        type: "success",
-      });
-      clipboard.destroy();
-    });
-  }
+const copyOrderNo = (id) => {
+  const range = document.createRange();
+  range.selectNode(document.getElementById(`${id}`));
+  const selection = window.getSelection();
+  if (selection.rangeCount > 0) selection.removeAllRanges();
+  selection.addRange(range);
+  document.execCommand("copy");
+  alert("复制成功......");
 };
 
 const InformationMerge = (props, context) => {
@@ -65,7 +50,7 @@ const InformationMerge = (props, context) => {
             style={style}
             id={key}
             onClick={() => copyOrderNo(key)}
-            data-clipboard-text={value}
+            // data-clipboard-text={value}
           >
             {value || "无"}
           </div>
