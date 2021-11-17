@@ -1,7 +1,7 @@
 <!--
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2021-10-12 17:54:01
- * @LastEditTime: 2021-11-16 18:27:32
+ * @LastEditTime: 2021-11-16 19:19:58
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 
@@ -45,7 +45,7 @@ const InformationMerge = (props, context) => {
   if (props.props.data) {
     data = props.props.data;
   }
-  const style = "cursor:pointer";
+  const style = { cursor: "pointer", padding: "0px 10px" };
   const i = (
     <div>
       {data.map((item, index) => {
@@ -71,7 +71,7 @@ const InformationMerge = (props, context) => {
           </div>
         );
         return (
-          <div>
+          <div key={key}>
             <div>{label}：</div>
             {`${version}` === 3 ? (
               <el-tooltip placement="top" v-slots={slots}>
