@@ -1,7 +1,7 @@
 <!--
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2021-10-12 17:54:01
- * @LastEditTime: 2021-11-16 19:19:58
+ * @LastEditTime: 2021-11-17 12:11:40
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 
@@ -70,7 +70,7 @@ const InformationMerge = (props, context) => {
             {value || "无"}
           </div>
         );
-        return (
+        return value ? (
           <div key={key}>
             <div>{label}：</div>
             {`${version}` === 3 ? (
@@ -90,6 +90,8 @@ const InformationMerge = (props, context) => {
               </el-tooltip>
             )}
           </div>
+        ) : (
+          []
         );
       })}
     </div>
