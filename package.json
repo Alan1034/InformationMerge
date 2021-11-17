@@ -26,6 +26,5 @@
     "url": "https://github.com/Alan1034/VueNpmFrame.git"
   },
   "dependencies": {
-    "clipboardy": "^3.0.0"
   }
 }
