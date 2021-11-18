@@ -1,7 +1,7 @@
 <!--
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2021-10-12 17:54:01
- * @LastEditTime: 2021-11-18 11:11:43
+ * @LastEditTime: 2021-11-18 16:44:04
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 
@@ -18,9 +18,13 @@ const InformationMerge = {
       default: [],
       type: Array,
     },
+    aftercopy: {
+      default: () => {},
+      type: Function,
+    },
   },
   render(createElement, context) {
-    const { data } = context.props;
+    const { data, aftercopy } = context.props;
     const file = (
       <div>
         {data.map((item, index) => {
@@ -30,7 +34,7 @@ const InformationMerge = {
             <span
               style={style}
               id={key}
-              onClick={() => copyOrderNo(key)}
+              onClick={() => copyOrderNo(key, aftercopy)}
               // data-clipboard-text={value}
             >
               {value || "无"}

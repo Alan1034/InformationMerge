@@ -1,7 +1,7 @@
 <!--
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2021-10-12 17:54:01
- * @LastEditTime: 2021-11-18 11:08:14
+ * @LastEditTime: 2021-11-18 16:49:22
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 
@@ -12,7 +12,7 @@
 import { copyOrderNo, style } from "./components/copy";
 
 const InformationMerge = (props, context) => {
-  const { data } = props;
+  const { data, aftercopy } = props;
   const i = (
     <div>
       {data.map((item, index) => {
@@ -28,7 +28,11 @@ const InformationMerge = (props, context) => {
           ),
         };
         const int = (
-          <span style={style} id={key} onClick={() => copyOrderNo(key)}>
+          <span
+            style={style}
+            id={key}
+            onClick={() => copyOrderNo(key, aftercopy)}
+          >
             {value || "无"}
           </span>
         );
@@ -51,6 +55,10 @@ InformationMerge.props = {
   data: {
     default: [],
     type: Array,
+  },
+  aftercopy: {
+    default: () => {},
+    type: Function,
   },
 };
 
