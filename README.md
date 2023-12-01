@@ -9,7 +9,7 @@ import InformationMerge from "information-merge";
     const data = [
        {
          value: "广州海珠区国际轻纺城首层F 1062-1063",
-         label: "广州海珠区国际轻纺城首层",
+         label: "供应商地址",
        },
     ];
     return  <InformationMerge
