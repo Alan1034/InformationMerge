@@ -1,0 +1,13 @@
+{
+  "include": [
+    "index.d.ts",
+    "src/**/*",
+    "src/**/*.vue",
+    "public/*",
+  ],
+  "exclude": [],
+  "compilerOptions": {
+    "declaration": true,
+    "composite": true
+  }
+}
