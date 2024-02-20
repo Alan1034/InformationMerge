@@ -8,6 +8,7 @@
   "exclude": [],
   "compilerOptions": {
     "declaration": true,
-    "composite": true
+    "composite": true,
+    "jsx": "preserve",
   }
 }

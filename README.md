@@ -25,5 +25,7 @@ import InformationMerge from "information-merge";
 
 ![image-20211014192959856](https://raw.githubusercontent.com/Alan1034/PicturesServer/main/PicGo_imgs/202110141930077.png)
 
+
+clampOptions
 安装：npm i information-merge<br/>
 install: npm i information-merge

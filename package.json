@@ -14,7 +14,9 @@
     "linkNode": "tsx script/linkNode.ts && yarn link && run-p dev",
     "unlinkNode": "tsx script/unlinkNode.ts && yarn unlink && run-p buildts",
     "dev": "tsc -w -p .",
-    "buildts": "rimraf dist && tsc -p ."
+    "buildts": "rimraf dist && tsc -p .",
+    "ionic:build": "npm run build",
+    "ionic:serve": "npm run dev"
   },
   "keywords": [
     "vue3",
@@ -47,16 +49,5 @@
     "url": "https://github.com/Alan1034/InformationMerge"
   },
   "dependencies": {},
-  "typings": "./dist/index.d.ts",
-  "module": "./dist/index.js",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.umd.cjs"
-    },
-    "./style": "./dist/style.css"
-  },
-  "files": [
-    "/dist"
-  ]
+  "typings": "./publish/index.d.ts"
 }

@@ -1,18 +1,10 @@
-<!--
- * @Author: 陈德立*******419287484@qq.com
- * @Date: 2021-10-12 17:54:01
- * @LastEditTime: 2024-02-19 10:39:29
- * @LastEditors: 陈德立*******419287484@qq.com
- * @Github: https://github.com/Alan1034
- * @Description: 
- * @FilePath: \InformationMerge\src\InformationMergeVue3.vue
- * 
--->
-<script setup>
-import { copyOrderNo, style } from "./components/copy";
+/** @format */
 
+import { copyOrderNo, style } from "./components/copy";
+import "./components/clamp.js";
+import { nextTick, forceUpdate } from "vue";
 const InformationMerge = (props, context) => {
-  const { data, aftercopy } = props;
+  const { data = [], aftercopy, clampOptions } = props;
   const i = (
     <div>
       {data.map((item, index) => {
@@ -36,6 +28,14 @@ const InformationMerge = (props, context) => {
             {value || "无"}
           </span>
         );
+        nextTick(() => {
+          const node = document.getElementById(`${key}`);
+          if (node) {
+            // console.log(clampOptions);
+            $clamp(node, { ...clampOptions });
+          }
+        });
+
         return value ? (
           <div key={key}>
             <span>
@@ -63,7 +63,11 @@ InformationMerge.props = {
     default: () => {},
     type: Function,
   },
+  clampOptions: {
+    // https://github.com/josephschmitt/Clamp.js
+    default: {},
+    type: Object,
+  },
 };
 
 export default InformationMerge;
-</script>

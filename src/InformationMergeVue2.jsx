@@ -1,14 +1,5 @@
-<!--
- * @Author: 陈德立*******419287484@qq.com
- * @Date: 2021-10-12 17:54:01
- * @LastEditTime: 2021-11-18 16:44:04
- * @LastEditors: 陈德立*******419287484@qq.com
- * @Github: https://github.com/Alan1034
- * @Description: 
- * @FilePath: \InformationMerge\src\InformationMergeVue2.vue
- * 
--->
-<script>
+/** @format */
+
 import { copyOrderNo, style } from "./components/copy";
 
 const InformationMerge = {
@@ -66,4 +57,3 @@ const InformationMerge = {
 };
 
 export default InformationMerge;
-</script>
