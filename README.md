@@ -2,7 +2,7 @@
 
 一个集成了点击复制功能的展示组件 <br/>
 
-import InformationMerge from "information-merge";
+import {VInformationMerge} from "information-merge";
 
 示例:
 
@@ -12,20 +12,30 @@ import InformationMerge from "information-merge";
          label: "供应商地址",
        },
     ];
-    return  <InformationMerge
-                data={data}
-                aftercopy={(bol) => {
-                  if (bol) {
-                    this.msgSuccess("复制成功。。");
-                  } else {
-                    this.msgError("复制失败！！");
-                  }
-                }} // bol会传出复制成功或是失败
-              />;
+    return   <VInformationMerge
+          data={data}
+          aftercopy={(bol: boolean) => {
+            if (bol) {
+              ElMessage.success("复制成功");
+            } else {
+              ElMessage.error("复制失败")
+            }
+          }} // bol会传出复制成功或是失败
+          clampOptions={{ clamp: 2, collapseNode: "折叠", expandNode: "查看全部" }}
+        />;;
 
 ![image-20211014192959856](https://raw.githubusercontent.com/Alan1034/PicturesServer/main/PicGo_imgs/202110141930077.png)
 
 
-clampOptions
+clampOptions:{
+clamp: 2,
+collapseNode: "折叠",
+expandNode: "展开"
+}
+
+
+import { copyToClipboard } from "information-merge";
+const res=await copyToClipboard(`someString`)
+
 安装：npm i information-merge<br/>
 install: npm i information-merge

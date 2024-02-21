@@ -10,8 +10,8 @@ declare global {
   }
 }
 const InformationMerge = (props, context) => {
-  const { data = [], aftercopy, clampOptions } = props;
-
+  const { data, aftercopy, clampOptions } = props;
+  // console.log("clampOptions", clampOptions)
   const i = (
     <div>
       {data.map((item, index) => {
@@ -47,11 +47,14 @@ const InformationMerge = (props, context) => {
           </span>
         );
         // console.log(thisNode)
-        nextTick(() => {
-          if (thisNode) {
-            window.$clamp(thisNode, { ...clampOptions });
-          }
-        });
+        if (clampOptions) {
+          nextTick(() => {
+            if (thisNode) {
+              window.$clamp(thisNode, { ...clampOptions });
+            }
+          });
+        }
+
 
         return value ? (
           <div key={key}>
@@ -65,7 +68,7 @@ const InformationMerge = (props, context) => {
             <el-collapse-transition>
               <span v-show={show.value}>{value || "无"}</span>
             </el-collapse-transition>
-            <el-button
+            {clampOptions && <el-button
               type="primary"
               link
               onClick={() => (show.value = !show.value)}
@@ -73,7 +76,7 @@ const InformationMerge = (props, context) => {
               {show.value
                 ? clampOptions?.collapseNode || "折叠"
                 : clampOptions?.expandNode || "展开"}
-            </el-button>
+            </el-button>}
           </div>
         ) : (
           []
@@ -89,12 +92,13 @@ InformationMerge.props = {
     type: Array,
   },
   aftercopy: {
+    require: false,
     default: () => { },
     type: Function,
   },
   clampOptions: {
     // https://github.com/josephschmitt/Clamp.js
-    default: {},
+    require: false,
     type: Object,
   },
 };
