@@ -11,11 +11,17 @@ declare global {
 }
 const InformationMerge = (props, context) => {
   const { data, aftercopy, clampOptions } = props;
-  // console.log("clampOptions", clampOptions)
+  let show = ref(false);
+  let maxLength = 0
+  data.forEach(element => {
+    const { value = "", label = "" } = element;
+    maxLength += value.length
+  });
   const i = (
     <div>
       {data.map((item, index) => {
         const { value = "", label = "" } = item;
+
         const key = `${value}_${label}_${index}`;
         const slots = {
           content: () => (
@@ -27,7 +33,6 @@ const InformationMerge = (props, context) => {
           ),
         };
         let thisNode = null;
-        let show = ref(false);
         const int = (
           <span>
             <el-collapse-transition>
@@ -54,8 +59,6 @@ const InformationMerge = (props, context) => {
             }
           });
         }
-
-
         return value ? (
           <div key={key}>
             <span>
@@ -68,20 +71,22 @@ const InformationMerge = (props, context) => {
             <el-collapse-transition>
               <span v-show={show.value}>{value || "无"}</span>
             </el-collapse-transition>
-            {clampOptions && <el-button
-              type="primary"
-              link
-              onClick={() => (show.value = !show.value)}
-            >
-              {show.value
-                ? clampOptions?.collapseNode || "折叠"
-                : clampOptions?.expandNode || "展开"}
-            </el-button>}
           </div>
         ) : (
           []
         );
       })}
+      {clampOptions
+        && maxLength > (clampOptions?.clampLength || 0)
+        && <el-button
+          type="primary"
+          link
+          onClick={() => (show.value = !show.value)}
+        >
+          {show.value
+            ? clampOptions?.collapseNode || "折叠"
+            : clampOptions?.expandNode || "展开"}
+        </el-button>}
     </div>
   );
   return i;
