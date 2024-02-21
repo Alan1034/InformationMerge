@@ -14,4 +14,4 @@ declare module "*.vue" {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
-declare module "vue-npm-frame";
+declare module "information-merge";
