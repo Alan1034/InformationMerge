@@ -12,7 +12,7 @@ import {VInformationMerge} from "information-merge";
          label: "供应商地址",
        },
     ];
-    return   <VInformationMerge
+    return <VInformationMerge
           data={data}
           aftercopy={(bol: boolean) => {
             if (bol) {
@@ -20,22 +20,27 @@ import {VInformationMerge} from "information-merge";
             } else {
               ElMessage.error("复制失败")
             }
-          }} // bol会传出复制成功或是失败
+          }} // 
           clampOptions={{ clamp: 2, collapseNode: "折叠", expandNode: "查看全部" }}
         />;;
 
 ![image-20211014192959856](https://raw.githubusercontent.com/Alan1034/PicturesServer/main/PicGo_imgs/202110141930077.png)
 
+![image-20240221162025794](https://raw.githubusercontent.com/Alan1034/PicturesServer/main/PicGo_imgs/202402211620881.png)
 
-clampOptions:{
-clamp: 2,
-collapseNode: "折叠",
-expandNode: "展开"
-}
+| 参数         | 格式/示例                                            | 必传 | 内容说明                                                     |
+| ------------ | :--------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| data         | [{value:String,label?:String}]                       | 是   | label可以不传                                                |
+| aftercopy    | (bol)=>{bol: boolean}                                | 否   | bol会传出复制成功或是失败                                    |
+| clampOptions | {clamp: 2,collapseNode?: "折叠",expandNode?: "展开"} | 否   | clamp:详见https://github.com/josephschmitt/Clamp.js的clamp √参数，目前不支持useNativeClamp × ；collapseNode和expandNode为按钮文案 |
 
+将字符串复制到剪贴板
 
 import { copyToClipboard } from "information-merge";
+
+```
 const res=await copyToClipboard(`someString`)
+```
 
 安装：npm i information-merge<br/>
 install: npm i information-merge
