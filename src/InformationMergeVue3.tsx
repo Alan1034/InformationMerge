@@ -6,7 +6,6 @@ import { nextTick, ref } from "vue";
 declare global {
   interface Window {
     $clamp: any,
-    AMap: any
   }
 }
 const InformationMerge = (props, context) => {
@@ -109,7 +108,4 @@ InformationMerge.props = {
 };
 
 export default InformationMerge;
-function $clamp(thisNode: any, arg1: any) {
-  throw new Error("Function not implemented.");
-}
 
