@@ -1,6 +1,6 @@
 import legacy from '@vitejs/plugin-legacy'
 import { fileURLToPath } from 'url'
-import { defineConfig, loadEnv, splitVendorChunkPlugin } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
@@ -33,16 +33,7 @@ export default defineConfig(({ command, mode }) => {
 
       extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
     },
-
     plugins: [
-      /**
-       * @description: vite自带的文件分割配置
-       * @return {*}
-       */
-      {
-        ...splitVendorChunkPlugin(),
-        apply: 'build',
-      },
       /**
        * @description: 图片压缩插件
        * @return {*}
