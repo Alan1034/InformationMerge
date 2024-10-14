@@ -1,11 +1,11 @@
 /*
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2021-10-12 17:54:01
- * @LastEditTime: 2024-02-21 15:15:43
+ * @LastEditTime: 2024-10-14 17:51:28
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 
- * @FilePath: \InformationMerge\src\components\copy.js
+ * @FilePath: \InformationMerge\src\components\copy.ts
  * 
  */
 
@@ -51,4 +51,4 @@ export const copyOrderNo = (id, aftercopy) => {
   }
 };
 
-export const style = { cursor: "pointer", padding: "0px 5px" };
+export const style = { cursor: "pointer" };

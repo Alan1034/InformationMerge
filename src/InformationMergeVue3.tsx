@@ -76,7 +76,7 @@ const InformationMerge = (props, context) => {
         );
       })}
       {clampOptions
-        && maxLength > (clampOptions?.clampLength || 0)
+        && maxLength > (clampOptions?.clampLength || Infinity)
         && <el-button
           type="primary"
           link
