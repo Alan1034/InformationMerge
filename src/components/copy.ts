@@ -1,12 +1,12 @@
-/*
+/**
+ * @format
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2021-10-12 17:54:01
- * @LastEditTime: 2024-02-21 15:15:43
+ * @LastEditTime: 2024-10-14 17:56:00
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
- * @Description: 
- * @FilePath: \InformationMerge\src\components\copy.js
- * 
+ * @Description:
+ * @FilePath: \InformationMerge\src\components\copy.ts
  */
 
 /**
@@ -33,11 +33,11 @@ export const copyToClipboard = (textToCopy: string) => {
     textArea.select();
     return new Promise<void>((res, rej) => {
       // 执行复制命令并移除文本框
-      document.execCommand('copy') ? res() : rej();
+      document.execCommand("copy") ? res() : rej();
       textArea.remove();
     });
   }
-}
+};
 
 export const copyOrderNo = (id, aftercopy) => {
   const range = document.createRange();
@@ -47,8 +47,8 @@ export const copyOrderNo = (id, aftercopy) => {
   selection.addRange(range);
   const flag = document.execCommand("copy");
   if (aftercopy) {
-    aftercopy(flag)
+    aftercopy(flag);
   }
 };
 
-export const style = { cursor: "pointer", padding: "0px 5px" };
+export const style = { cursor: "pointer" };
