@@ -1,6 +1,6 @@
 # InformationMerge
 
-一个集成了点击复制功能的展示组件 <br/>
+一个集成了点击复制功能的展示组件，vue2请使用@1版本，Vue3请使用@2版本 <br/>
 
 import {VInformationMerge} from "information-merge";
 

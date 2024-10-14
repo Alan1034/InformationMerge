@@ -8,22 +8,9 @@
  * @FilePath: \InformationMerge\src\index.ts
  * 
  */
-import * as Vue from "vue";
 
-import InformationMergeVue3 from './InformationMergeVue3';
-import InformationMergeVue2 from './InformationMergeVue2';
+import InformationMergeVue from './InformationMergeVue';
 import { copyToClipboard as thisCopyToClipboard } from "./components/copy";
-// @ts-ignore
-const version = Vue.default ? Number(Vue.default.version.split(".")[0]) : Number(Vue.version.split(".")[0]);
 
-let InformationMerge: any = null
-
-if (`${version}` === "3") {
-  InformationMerge = InformationMergeVue3
-}
-else if (`${version}` === "2") {
-  InformationMerge = InformationMergeVue2
-}
-
-export const VInformationMerge = InformationMerge
+export const VInformationMerge = InformationMergeVue
 export const copyToClipboard = thisCopyToClipboard
