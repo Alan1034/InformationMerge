@@ -2,7 +2,9 @@
 
 一个集成了点击复制功能的展示组件，vue2请使用@1版本，Vue3请使用@2版本 <br/>
 
+```
 import {VInformationMerge} from "information-merge";
+```
 
 示例:
 
@@ -21,8 +23,8 @@ import {VInformationMerge} from "information-merge";
               ElMessage.error("复制失败")
             }
           }} // 
-          clampOptions={{ clamp: 2, collapseNode: "折叠", expandNode: "查看全部" }}
-        />;;
+          clampOptions={{ clamp: 2,clampLength: 28, collapseNode: "折叠", expandNode: "查看全部" }}
+        />;
 
 ![image-20211014192959856](https://raw.githubusercontent.com/Alan1034/PicturesServer/main/PicGo_imgs/202110141930077.png)
 
