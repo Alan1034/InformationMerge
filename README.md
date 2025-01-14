@@ -26,6 +26,25 @@ import {VInformationMerge} from "information-merge";
           clampOptions={{ clamp: 2,clampLength: 28, collapseNode: "折叠", expandNode: "查看全部" }}
         />;
 
+渲染函数示例：
+
+```
+import { h } from "vue";
+h(VInformationMerge, {
+  props: {
+    data,
+    aftercopy: (bol) => {
+      if (bol) {
+        $message.success("复制成功");
+      } else {
+        $message.error("复制失败");
+      }
+    },
+    clampOptions: { clamp: 2 },
+  },
+});
+```
+
 ![image-20211014192959856](https://raw.githubusercontent.com/Alan1034/PicturesServer/main/PicGo_imgs/202110141930077.png)
 
 ![image-20240221162025794](https://raw.githubusercontent.com/Alan1034/PicturesServer/main/PicGo_imgs/202402211620881.png)

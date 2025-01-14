@@ -8,7 +8,7 @@ const InformationMerge = {
   functional: true,
   props: {
     data: {
-      default: [],
+      default: () => [],
       type: Array,
     },
     aftercopy: {
