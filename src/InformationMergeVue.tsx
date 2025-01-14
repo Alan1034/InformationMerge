@@ -14,7 +14,7 @@ const InformationMerge = (props, context) => {
   let maxLength = 0
   data.forEach(element => {
     const { value = "", label = "" } = element;
-    maxLength += value.length
+    maxLength += value?.length || 0;
   });
   const i = (
     <div>
