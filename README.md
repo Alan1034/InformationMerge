@@ -41,8 +41,22 @@ h(VInformationMerge, {
       }
     },
     clampOptions: { clamp: 2 },
+    layout: "Horizontal",
   },
 });
+```
+
+样式：
+
+```
+<style lang="less" scoped>
+:deep(.information-merge-label) {
+...
+}
+:deep(.information-merge-value) {
+...
+}
+</style>
 ```
 
 ![image-20211014192959856](https://raw.githubusercontent.com/Alan1034/PicturesServer/main/PicGo_imgs/202110141930077.png)
@@ -54,6 +68,7 @@ h(VInformationMerge, {
 | data         | [{value:String,label?:String}]                               | 是   | label可以不传，value传入VNode时无法正确计算宽度 ×，请传入String |
 | aftercopy    | (bol)=>{bol: boolean}                                        | 否   | bol会传出复制成功或是失败                                    |
 | clampOptions | {clamp: 2,clampLength: 28,collapseNode?: "折叠",expandNode?: "展开"} | 否   | clamp:详见https://github.com/josephschmitt/Clamp.js的clamp √参数，目前不支持useNativeClamp × ；clampLength:字符串的超出折叠长度，用于计算展开折叠按钮是否展示，不传入clampLength则不展示；collapseNode和expandNode为按钮文案； |
+| layout       | layout: "Horizontal"                                         | 否   | Horizontal 水平 Vertical 垂直（默认值）Inline 行内（未实现） |
 
 将字符串复制到剪贴板
 
