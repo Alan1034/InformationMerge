@@ -9,7 +9,7 @@ declare global {
   }
 }
 const InformationMerge = (props, context) => {
-  const { data, aftercopy, clampOptions } = props;
+  const { data, aftercopy, clampOptions, layout } = props;
   let show = ref(false);
   let maxLength = 0
   data.forEach(element => {
@@ -31,6 +31,12 @@ const InformationMerge = (props, context) => {
             </div>
           ),
         };
+        const labelDom = (
+          <span class="information-merge-label">
+            {label}
+            {label ? "：" : ""}
+          </span>
+        );
         let thisNode = null;
         const int = (
           <span>
@@ -44,7 +50,8 @@ const InformationMerge = (props, context) => {
                     thisNode = node;
                   }}
                 >
-                  {value || "无"}
+                  {layout === "Horizontal" ? labelDom : []}
+                  <span class="information-merge-value">{value || "无"}</span>
                 </span>
               </span>
             </el-collapse-transition>
@@ -60,10 +67,7 @@ const InformationMerge = (props, context) => {
         }
         return value ? (
           <div key={key}>
-            <span>
-              {label}
-              {label ? "：" : ""}
-            </span>
+            {layout === "Vertical" ? labelDom : []}
             <el-tooltip placement="top" v-slots={slots}>
               {int}
             </el-tooltip>
@@ -104,6 +108,12 @@ InformationMerge.props = {
     // https://github.com/josephschmitt/Clamp.js
     require: false,
     type: Object,
+  },
+  layout: {
+    require: false,
+    type: String,
+    default: "Vertical",
+    // Horizontal 水平 Vertical 垂直 Inline 行内（未实现）
   },
 };
 
