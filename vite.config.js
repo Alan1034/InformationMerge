@@ -51,7 +51,7 @@ export default defineConfig(({ command, mode }) => {
        */
       {
         ...legacy({
-          targets: ['defaults'],
+          targets: ['defaults', 'Android >= 4.4'],
         }),
         apply: 'build',
       },
@@ -72,6 +72,7 @@ export default defineConfig(({ command, mode }) => {
      */
     build: {
       // https://cn.vitejs.dev/guide/build.html#library-mode
+      target: 'es2015',
       lib: {
         // Could also be a dictionary or array of multiple entry points
         // 添加打包入口文件夹
